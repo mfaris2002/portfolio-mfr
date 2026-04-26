@@ -72,7 +72,12 @@ const initGlobe = () => {
 
       // Pulsing effect for the marker
       const time = Date.now() / 1000
-      state.markers[0].size = 0.06 + Math.sin(time * 4) * 0.03
+      const pulseSize = 0.06 + Math.sin(time * 4) * 0.03
+      
+      // We must assign the markers array to state, not mutate undefined
+      state.markers = [
+        { location: [-6.9175, 107.6191], size: pulseSize }
+      ]
     }
   })
 
