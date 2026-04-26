@@ -95,87 +95,95 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, nextTick } from 'vue'
 import Lenis from '@studio-freight/lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+let lenis;
+let scrollCtx;
+
 onMounted(() => {
   if (typeof window === 'undefined') return;
-  
-  // 1. Lenis Initialization
-  const lenis = new Lenis({
-    duration: 1.5,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smooth: true,
-    smoothTouch: false
-  })
-  
-  lenis.on('scroll', ScrollTrigger.update)
-  
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000)
-  })
-  
-  gsap.ticker.lagSmoothing(0)
-  
-  // 2. Global Scroll Trigger
-  gsap.registerPlugin(ScrollTrigger)
-  
-  // Parallax for Hero
-  gsap.to('.hero-bg', {
-    yPercent: 40,
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#hero",
-      start: "top top",
-      end: "bottom top",
-      scrub: true
-    }
-  })
-  
-  gsap.to('.hero-fg', {
-    yPercent: 15,
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#hero",
-      start: "top top",
-      end: "bottom top",
-      scrub: true
-    }
-  })
 
-  // 3. Staggered reveal for cards and sections
-  const revealContainers = document.querySelectorAll('.reveal-container')
-  
-  revealContainers.forEach(container => {
-    const reveals = container.querySelectorAll('.reveal')
-    gsap.fromTo(reveals, 
-      { opacity: 0, y: 100 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.2,
-        duration: 1.2,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: container,
-          start: "top 80%",
-          once: true
-        }
-      }
-    )
-  })
+  // Wait for next tick to ensure DOM is ready
+  nextTick(() => {
+    // Small delay to ensure hydration and layout are fully complete
+    setTimeout(() => {
+      gsap.registerPlugin(ScrollTrigger)
+      
+      // 1. Lenis Initialization
+      lenis = new Lenis({
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smooth: true
+      })
+      
+      lenis.on('scroll', ScrollTrigger.update)
+      
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000)
+      })
+      
+      gsap.ticker.lagSmoothing(0)
+      
+      // Use GSAP Context for easy cleanup
+      scrollCtx = gsap.context(() => {
+        
+        // Parallax for Hero
+        gsap.to('.hero-bg', {
+          yPercent: 40,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+          }
+        })
+        
+        gsap.to('.hero-fg', {
+          yPercent: 15,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+          }
+        })
 
-  // Ensure calculations are correct after hydration
-  setTimeout(() => {
-    ScrollTrigger.refresh()
-  }, 500)
+        // 3. Staggered reveal for cards and sections
+        const revealContainers = document.querySelectorAll('.reveal-container')
+        
+        revealContainers.forEach(container => {
+          const reveals = container.querySelectorAll('.reveal')
+          gsap.fromTo(reveals, 
+            { opacity: 0, y: 80 },
+            {
+              opacity: 1,
+              y: 0,
+              stagger: 0.2,
+              duration: 1.2,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: container,
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+              }
+            }
+          )
+        })
 
-  // Cleanup on unmount
-  onUnmounted(() => {
-    lenis.destroy()
-    ScrollTrigger.getAll().forEach(t => t.kill())
+        // Refresh triggers just in case
+        ScrollTrigger.refresh()
+      })
+    }, 100)
   })
+})
+
+onUnmounted(() => {
+  if (lenis) lenis.destroy()
+  if (scrollCtx) scrollCtx.revert()
 })
 </script>
