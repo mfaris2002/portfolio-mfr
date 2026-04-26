@@ -47,12 +47,13 @@ const initGlobe = () => {
     phi: 0,
     theta: 0,
     dark: isDark ? 1 : 0,
-    diffuse: isDark ? 1.2 : 1.0,
+    diffuse: isDark ? 1.2 : 1.2,
     mapSamples: 16000,
-    mapBrightness: isDark ? 6 : 1.2,
-    baseColor: isDark ? [0.15, 0.15, 0.15] : [0.95, 0.95, 0.95],
+    mapBrightness: isDark ? 6 : 2,
+    // baseColor is the color of the dots!
+    baseColor: isDark ? [0.6, 0.6, 0.6] : [0.2, 0.2, 0.2],
     markerColor: accentColor,
-    glowColor: isDark ? [0.1, 0.1, 0.1] : [0.9, 0.9, 0.9],
+    glowColor: isDark ? [0.15, 0.15, 0.15] : [0.9, 0.9, 0.9],
     markers: [
       { location: [-6.9175, 107.6191], size: 0.1 } // Bandung
     ],
