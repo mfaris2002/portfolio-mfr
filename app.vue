@@ -88,7 +88,7 @@
       </section>
 
       <footer class="py-16 border-t border-white/10 text-center px-6 mt-20">
-        <p class="text-white/40 font-mono text-sm tracking-widest uppercase">© {{ new Date().getFullYear() }} Muhamad Faris Rafi. All Rights Reserved.</p>
+        <p class="text-white/40 font-mono text-sm tracking-widest uppercase">© {{ new Date().getFullYear() }} Muhamad Faris Rafi. All Rights Reserved. | v1.0.1</p>
       </footer>
     </main>
   </div>
