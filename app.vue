@@ -14,17 +14,24 @@
 
     <main class="relative z-10">
       <!-- Section A: Hero -->
-      <section class="h-screen flex items-center justify-center relative overflow-hidden px-6" id="hero">
-        <div class="absolute w-full flex justify-center text-center overflow-hidden">
+      <section class="min-h-screen flex flex-col md:flex-row items-center justify-center relative overflow-hidden px-6 max-w-7xl mx-auto gap-8 pt-10" id="hero">
+        <div class="absolute w-full flex justify-center text-center overflow-hidden z-0">
           <h1 class="hero-bg text-[25vw] md:text-[20vw] font-bold leading-none text-black/5 dark:text-white/5 font-mono select-none transition-colors duration-500">MFR</h1>
         </div>
-        <div class="hero-fg z-10 text-center">
-          <h2 class="text-5xl md:text-7xl font-bold font-mono tracking-tighter mb-6 text-gray-900 dark:text-white uppercase transition-colors duration-500">System Implementor</h2>
-          <p class="text-xl md:text-2xl text-gray-600 dark:text-white/60 font-mono flex items-center justify-center gap-4 transition-colors duration-500">
-            <span class="w-12 h-px bg-accent"></span>
+        
+        <!-- Left: Text -->
+        <div class="hero-fg z-10 text-center md:text-left flex-1 w-full flex flex-col justify-center">
+          <h2 class="text-5xl md:text-7xl lg:text-8xl font-bold font-mono tracking-tighter mb-6 text-gray-900 dark:text-white uppercase transition-colors duration-500 leading-none">System<br/>Implementor</h2>
+          <p class="text-xl md:text-2xl text-gray-600 dark:text-white/60 font-mono flex items-center justify-center md:justify-start gap-4 transition-colors duration-500">
+            <span class="w-12 h-px bg-accent hidden md:block"></span>
             Web Developer
             <span class="w-12 h-px bg-accent"></span>
           </p>
+        </div>
+
+        <!-- Right: Globe -->
+        <div class="hero-fg z-10 flex-1 w-full max-w-md relative mt-8 md:mt-0">
+          <InteractiveGlobe />
         </div>
       </section>
 

@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxt/image": "^2.0.0",
     "@studio-freight/lenis": "^1.0.42",
+    "cobe": "^2.0.1",
     "gsap": "^3.12.5",
     "lucide-vue-next": "^0.378.0",
     "nuxt": "^3.11.2",
