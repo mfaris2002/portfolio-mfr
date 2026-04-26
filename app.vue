@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-contrast text-primary min-h-screen relative overflow-hidden font-sans">
+  <div class="bg-contrast text-primary min-h-screen relative font-sans">
     <!-- Grid Background Pattern -->
     <div class="fixed inset-0 pointer-events-none z-0" style="background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px); background-size: 50px 50px;"></div>
 
@@ -150,19 +150,27 @@ onMounted(() => {
   
   revealContainers.forEach(container => {
     const reveals = container.querySelectorAll('.reveal')
-    gsap.from(reveals, {
-      opacity: 0,
-      y: 100,
-      stagger: 0.2,
-      duration: 1.2,
-      ease: "power4.out",
-      scrollTrigger: {
-        trigger: container,
-        start: "top 80%",
-        toggleActions: "play none none reverse"
+    gsap.fromTo(reveals, 
+      { opacity: 0, y: 100 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.2,
+        duration: 1.2,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: container,
+          start: "top 80%",
+          once: true
+        }
       }
-    })
+    )
   })
+
+  // Ensure calculations are correct after hydration
+  setTimeout(() => {
+    ScrollTrigger.refresh()
+  }, 500)
 
   // Cleanup on unmount
   onUnmounted(() => {
