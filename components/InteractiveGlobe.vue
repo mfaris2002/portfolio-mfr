@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full aspect-square max-w-[500px] flex items-center justify-center mx-auto">
+  <div class="relative w-full aspect-square max-w-[500px] flex items-center justify-center mx-auto" ref="containerRef">
     <!-- Globe Canvas -->
     <canvas
       ref="canvasRef"
@@ -10,10 +10,14 @@
       @pointermove="onPointerMove"
     ></canvas>
     
-    <!-- Location Label -->
-    <div class="absolute bottom-4 right-4 md:bottom-8 md:right-8 flex items-center gap-2 bg-black/40 backdrop-blur-sm border border-white/10 px-3 py-1.5 rounded-full pointer-events-none opacity-80">
-      <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-      <span class="text-xs font-mono text-white/80 uppercase tracking-wider">Bandung, ID</span>
+    <!-- Following Location Label -->
+    <div 
+      ref="labelRef"
+      class="absolute flex items-center gap-2 bg-black/40 backdrop-blur-sm border border-white/10 px-3 py-1.5 rounded-full pointer-events-none transition-opacity duration-300 z-10"
+      style="left: 50%; top: 50%; transform: translate(15px, -50%); opacity: var(--cobe-visible-bandung, 0);"
+    >
+      <span class="w-2 h-2 rounded-full bg-accent animate-pulse shadow-[0_0_10px_#3b82f6]"></span>
+      <span class="text-xs font-mono text-white/90 uppercase tracking-wider font-bold">Bandung, ID</span>
     </div>
   </div>
 </template>
@@ -22,6 +26,9 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const canvasRef = ref(null)
+const containerRef = ref(null)
+const labelRef = ref(null)
+
 let globe = null
 let pointerInteracting = null
 let pointerInteractionMovement = 0
@@ -52,7 +59,6 @@ onMounted(async () => {
 
   if (!canvasRef.value) return
 
-  // Base options
   const isDark = document.documentElement.classList.contains('dark') || true
   const baseOptions = {
     devicePixelRatio: 2,
@@ -62,37 +68,42 @@ onMounted(async () => {
     diffuse: 1.2,
     mapSamples: 16000,
     mapBrightness: 8,
-    baseColor: [0.1, 0.1, 0.1], // Yields bright white dots in dark mode
+    baseColor: [0.1, 0.1, 0.1], 
     markerColor: [0.23, 0.51, 0.96],
     glowColor: [0.2, 0.2, 0.2],
   }
 
-  // Initial creation
   globe = createGlobe(canvasRef.value, {
     ...baseOptions,
     phi: phi,
     theta: theta,
-    markers: [{ location: [-6.9175, 107.6191], size: 0.1 }]
+    markers: [{ location: [-6.9175, 107.6191], size: 0.1, id: 'bandung' }]
   })
 
-  // Start explicit render loop (cobe v2 requires manual looping to sync with image load and animate)
   const renderLoop = () => {
     if (pointerInteracting === null) {
       phi += 0.003
     }
     
-    // Pulsing marker
     const time = Date.now() / 1000
     const pulseSize = 0.08 + Math.sin(time * 5) * 0.04
 
-    // Push updates to cobe
     if (globe) {
       globe.update({
         ...baseOptions,
         phi: phi,
         theta: theta,
-        markers: [{ location: [-6.9175, 107.6191], size: pulseSize }]
+        markers: [{ location: [-6.9175, 107.6191], size: pulseSize, id: 'bandung' }]
       })
+    }
+
+    // Sync label position to cobe's hidden anchor div
+    if (containerRef.value && labelRef.value) {
+      const anchor = containerRef.value.querySelector('div[style*="--cobe-bandung"]')
+      if (anchor) {
+        labelRef.value.style.left = anchor.style.left
+        labelRef.value.style.top = anchor.style.top
+      }
     }
 
     frameId = requestAnimationFrame(renderLoop)
