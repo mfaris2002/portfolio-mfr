@@ -1,6 +1,7 @@
 <template>
   <div class="bg-white dark:bg-contrast text-gray-900 dark:text-primary min-h-screen relative font-sans transition-colors duration-500">
     <CustomCursor />
+    <AudioSystem />
     
     <!-- Dark Mode Toggle -->
     <button @click="toggleDarkMode" class="fixed top-6 right-6 z-50 p-3 rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors duration-300 backdrop-blur-md group cursor-pointer border border-transparent dark:border-white/10" aria-label="Toggle Dark Mode">
