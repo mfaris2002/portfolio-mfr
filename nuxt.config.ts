@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'MFR Portfolio - System Implementor & Web Developer',
+      title: 'MFR',
       meta: [
         { name: 'description', content: 'Portfolio of Muhamad Faris Rafi, System Implementor & Web Developer' }
       ],
