@@ -21,7 +21,7 @@
         
         <!-- Left: Text -->
         <div class="hero-fg z-10 text-center md:text-left flex-1 w-full flex flex-col justify-center">
-          <h2 class="text-5xl md:text-7xl lg:text-8xl font-bold font-mono tracking-tighter mb-6 text-gray-900 dark:text-white uppercase transition-colors duration-500 leading-none">System<br/>Implementor</h2>
+          <h2 class="text-5xl md:text-7xl lg:text-8xl font-bold font-mono tracking-tighter mb-6 text-gray-900 dark:text-white uppercase transition-colors duration-500 leading-none">Muhamad Faris<br/>Rafi</h2>
           <p class="text-xl md:text-2xl text-gray-600 dark:text-white/60 font-mono flex items-center justify-center md:justify-start gap-4 transition-colors duration-500">
             <span class="w-12 h-px bg-accent hidden md:block"></span>
             Web Developer
