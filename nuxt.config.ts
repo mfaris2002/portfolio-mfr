@@ -14,8 +14,8 @@ export default defineNuxtConfig({
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap' }
+        { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/geist@1.0.3/dist/fonts/geist-sans/style.css' },
+        { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/geist@1.0.3/dist/fonts/geist-mono/style.css' }
       ]
     }
   }

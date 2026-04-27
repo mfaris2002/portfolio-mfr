@@ -13,7 +13,7 @@ export default {
     extend: {
       colors: {
         primary: '#FFFFFF',
-        contrast: '#0A0A0A',
+        contrast: '#050505',
         accent: '#3b82f6',
       },
       fontFamily: {
