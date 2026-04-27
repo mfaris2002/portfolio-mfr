@@ -47,13 +47,12 @@ const initGlobe = () => {
     phi: 0,
     theta: 0,
     dark: isDark ? 1 : 0,
-    diffuse: isDark ? 1.2 : 1.2,
+    diffuse: 1.2,
     mapSamples: 16000,
-    mapBrightness: isDark ? 6 : 2,
-    // baseColor is the color of the dots!
-    baseColor: isDark ? [0.6, 0.6, 0.6] : [0.2, 0.2, 0.2],
+    mapBrightness: 6,
+    baseColor: [0.3, 0.3, 0.3],
     markerColor: accentColor,
-    glowColor: isDark ? [0.15, 0.15, 0.15] : [0.9, 0.9, 0.9],
+    glowColor: [1, 1, 1],
     markers: [
       { location: [-6.9175, 107.6191], size: 0.1 } // Bandung
     ],
@@ -69,15 +68,6 @@ const initGlobe = () => {
 
       state.phi = currentPhi
       state.theta = currentTheta
-
-      // Pulsing effect for the marker
-      const time = Date.now() / 1000
-      const pulseSize = 0.06 + Math.sin(time * 4) * 0.03
-      
-      // We must assign the markers array to state, not mutate undefined
-      state.markers = [
-        { location: [-6.9175, 107.6191], size: pulseSize }
-      ]
     }
   })
 
