@@ -59,9 +59,14 @@ jobs:
             cd portfolio-mfr
             git pull origin main
             # Create/update .env with the repository owner for docker-compose
-            echo "REPO_OWNER=${{ github.repository_owner }}" > .env.deploy
+            echo "REPO_OWNER=${{ github.repository_owner }}" > .env
             # Login to GHCR on VPS
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            # Stop any containers using the ports or having old names
+            docker stop portfolio-mfr portfolio-nuxt portfolio-strapi 2>/dev/null || true
+            docker rm portfolio-mfr portfolio-nuxt portfolio-strapi 2>/dev/null || true
             # Pull and restart
             docker-compose pull
             docker-compose up -d
+            # Optional: Clean up unused images to save disk space
+            docker image prune -f
