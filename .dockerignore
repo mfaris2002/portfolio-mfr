@@ -1,0 +1,11 @@
+node_modules
+.nuxt
+.output
+dist
+.git
+.env
+backend/node_modules
+backend/.tmp
+backend/.cache
+backend/build
+backend/dist
