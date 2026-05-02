@@ -15,13 +15,12 @@ ENV NODE_ENV=production
 WORKDIR /app
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/package.json /app/package-lock.json ./
+# In Strapi 5, the build output is in the dist folder
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/public ./public
-COPY --from=build /app/config ./config
-COPY --from=build /app/database ./database
-# Note: SQLite database will be in /app/database/data.db or similar, 
-# but we usually mount it as a volume in docker-compose.
-
+# We also need the compiled config files if they are not in dist
+# But usually, 'strapi build' compiles everything needed into 'dist'
 
 EXPOSE 1337
+# In production, we should run the compiled entry point
 CMD ["npm", "run", "start"]
