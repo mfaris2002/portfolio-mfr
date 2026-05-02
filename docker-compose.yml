@@ -8,6 +8,12 @@ services:
       DATABASE_CLIENT: sqlite
       DATABASE_FILENAME: .tmp/data.db
       STRAPI_URL: ${STRAPI_URL:-http://localhost:1337}
+      # Required keys for Strapi Production
+      APP_KEYS: ${APP_KEYS:-toBeModified1,toBeModified2}
+      API_TOKEN_SALT: ${API_TOKEN_SALT:-tobemodifiedsalt}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET:-tobemodifiedjwt}
+      TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT:-tobemodifiedtransfer}
+      JWT_SECRET: ${JWT_SECRET:-tobemodifiedjwtsecret}
     volumes:
       - ./backend/database:/opt/app/database
       - ./backend/public/uploads:/opt/app/public/uploads
