@@ -6,7 +6,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
 ENV NODE_OPTIONS=--max-old-space-size=2048
-RUN npm run build
+RUN npm run build && npx tsc
 
 # STEP 2: Production
 FROM node:22-alpine
