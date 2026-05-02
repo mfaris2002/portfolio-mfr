@@ -1,0 +1,31 @@
+services:
+  strapi:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: portfolio-strapi
+    restart: always
+    environment:
+      NODE_ENV: production
+      DATABASE_CLIENT: sqlite
+      DATABASE_FILENAME: .tmp/data.db
+      STRAPI_URL: ${STRAPI_URL:-http://localhost:1337}
+    volumes:
+      - ./backend/database:/opt/app/database
+      - ./backend/public/uploads:/opt/app/public/uploads
+    ports:
+      - "1337:1337"
+
+  nuxt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio-nuxt
+    restart: always
+    environment:
+      NODE_ENV: production
+      STRAPI_URL: http://strapi:1337
+    ports:
+      - "3000:3000"
+    depends_on:
+      - strapi

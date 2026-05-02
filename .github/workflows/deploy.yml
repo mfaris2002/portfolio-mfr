@@ -18,6 +18,4 @@ jobs:
           script: |
             cd portfolio-mfr
             git pull origin main
-            docker build -t portfolio-mfr .
-            docker rm -f portfolio-mfr 2>/dev/null || true
-            docker run -d -p 3000:3000 --name portfolio-mfr portfolio-mfr
+            docker-compose up --build -d

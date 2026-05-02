@@ -1,5 +1,12 @@
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@nuxtjs/strapi'],
+  strapi: {
+    url: process.env.STRAPI_URL || 'http://localhost:1337',
+    prefix: '/api',
+    version: 'v5',
+    cookie: {},
+    cookieName: 'strapi_jwt'
+  },
   css: ['~/assets/css/main.css'],
   tailwindcss: {
     cssPath: '~/assets/css/main.css',
