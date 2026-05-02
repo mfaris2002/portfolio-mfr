@@ -69,4 +69,4 @@ jobs:
             docker-compose pull
             docker-compose up -d
             # Optional: Clean up unused images to save disk space
-            docker image prune -f
+            docker image prune -f || true
