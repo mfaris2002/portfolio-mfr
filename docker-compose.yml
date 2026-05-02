@@ -1,8 +1,6 @@
 services:
   strapi:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: ghcr.io/${REPO_OWNER:-mfaris2002}/portfolio-strapi:latest
     container_name: portfolio-strapi
     restart: always
     environment:
@@ -17,9 +15,7 @@ services:
       - "1337:1337"
 
   nuxt:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/${REPO_OWNER:-mfaris2002}/portfolio-nuxt:latest
     container_name: portfolio-nuxt
     restart: always
     environment:
