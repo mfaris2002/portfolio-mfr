@@ -69,7 +69,9 @@
             <h3 class="text-2xl md:text-3xl font-sans font-extrabold tracking-[-0.05em] text-gray-900 dark:text-white mb-2 transition-colors duration-500">
               {{ exp.role }} <span class="text-accent font-mono text-lg font-normal tracking-normal">@ {{ exp.company }}</span>
             </h3>
-            <span class="text-gray-500 dark:text-white/40 text-sm font-mono block mb-6 uppercase tracking-wider transition-colors duration-500">{{ exp.duration }}</span>
+            <span class="text-gray-500 dark:text-white/40 text-sm font-mono block mb-6 uppercase tracking-wider transition-colors duration-500">
+              {{ exp.start_year }} — {{ exp.is_current ? 'Present' : (exp.end_year || '') }}
+            </span>
             <div v-if="exp.description" class="text-gray-600 dark:text-white/70 leading-relaxed text-base md:text-lg transition-colors duration-500 space-y-4 font-sans font-normal">
                <!-- Simple rendering for Strapi Blocks if present -->
                <div v-for="(block, idx) in exp.description" :key="idx" class="relative pl-6 before:content-['>'] before:font-mono before:font-bold before:absolute before:left-0 before:text-accent">

@@ -5,7 +5,7 @@
     "singularName": "experience",
     "pluralName": "experiences",
     "displayName": "Experience",
-    "description": "Work experiences"
+    "description": "Work experiences with year-based duration"
   },
   "options": {
     "draftAndPublish": true
@@ -19,15 +19,19 @@
       "type": "string",
       "required": true
     },
-    "duration": {
-      "type": "string"
+    "start_year": {
+      "type": "integer",
+      "required": true
     },
-    "description": {
-      "type": "blocks"
+    "end_year": {
+      "type": "integer"
     },
     "is_current": {
       "type": "boolean",
       "default": false
+    },
+    "description": {
+      "type": "blocks"
     }
   }
 }
