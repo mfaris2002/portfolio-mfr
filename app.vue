@@ -133,7 +133,7 @@ const { find } = useStrapi()
 
 // Fetch dynamic data from Strapi with error handling
 const { data: projects } = useAsyncData('projects', () => find('projects', { populate: '*' }).catch(() => null))
-const { data: experiences } = useAsyncData('experiences', () => find('experiences', { sort: 'duration:desc' }).catch(() => null))
+const { data: experiences } = useAsyncData('experiences', () => find('experiences', { sort: 'start_year:desc' }).catch(() => null))
 const { data: skillsData } = useAsyncData('skills', () => find('skills').catch(() => null))
 
 // Group skills by category
