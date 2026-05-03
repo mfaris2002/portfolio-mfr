@@ -45,13 +45,29 @@
           <span class="text-accent">01_</span> TECHNICAL STACK
           <span class="h-px bg-black/10 dark:bg-white/10 flex-1"></span>
         </h2>
-        <div v-if="skillsGrouped" class="grid grid-cols-1 md:grid-cols-3 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10 reveal-container transition-colors duration-500">
-          <div v-for="(skills, category) in skillsGrouped" :key="category" class="bg-white dark:bg-contrast p-10 md:p-12 transition-all duration-300 hover:border-accent hover:border border border-transparent group reveal relative">
-            <h3 class="text-2xl font-sans font-extrabold tracking-[-0.05em] mb-6 text-gray-900 dark:text-white group-hover:text-accent transition-colors">{{ category }}</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-black/10 dark:bg-white/10 border border-black/10 dark:border-white/10 reveal-container transition-colors duration-500">
+          <div class="bg-white dark:bg-contrast p-10 md:p-12 transition-all duration-300 hover:border-accent hover:border border border-transparent group reveal relative">
+            <h3 class="text-2xl font-sans font-extrabold tracking-[-0.05em] mb-6 text-gray-900 dark:text-white group-hover:text-accent transition-colors">Core</h3>
             <ul class="space-y-4 font-mono text-sm text-gray-600 dark:text-white/60">
-              <li v-for="skill in skills" :key="skill.id" class="flex items-center gap-3">
-                <span class="text-accent font-bold">></span> {{ skill.name }}
-              </li>
+              <li class="flex items-center gap-3"><span class="text-accent font-bold">></span> JavaScript (ES6+)</li>
+              <li class="flex items-center gap-3"><span class="text-accent font-bold">></span> TypeScript</li>
+              <li class="flex items-center gap-3"><span class="text-accent font-bold">></span> SQL</li>
+            </ul>
+          </div>
+          <div class="bg-white dark:bg-contrast p-10 md:p-12 transition-all duration-300 hover:border-accent hover:border border border-transparent group reveal relative">
+            <h3 class="text-2xl font-sans font-extrabold tracking-[-0.05em] mb-6 text-gray-900 dark:text-white group-hover:text-accent transition-colors">Frameworks</h3>
+            <ul class="space-y-4 font-mono text-sm text-gray-600 dark:text-white/60">
+              <li class="flex items-center gap-3"><span class="text-accent font-bold">></span> Vue.js & Nuxt 3</li>
+              <li class="flex items-center gap-3"><span class="text-accent font-bold">></span> Node.js (MERN)</li>
+              <li class="flex items-center gap-3"><span class="text-accent font-bold">></span> Tailwind CSS</li>
+            </ul>
+          </div>
+          <div class="bg-white dark:bg-contrast p-10 md:p-12 transition-all duration-300 hover:border-accent hover:border border border-transparent group reveal relative">
+            <h3 class="text-2xl font-sans font-extrabold tracking-[-0.05em] mb-6 text-gray-900 dark:text-white group-hover:text-accent transition-colors">Infrastructure</h3>
+            <ul class="space-y-4 font-mono text-sm text-gray-600 dark:text-white/60">
+              <li class="flex items-center gap-3"><span class="text-accent font-bold">></span> Docker</li>
+              <li class="flex items-center gap-3"><span class="text-accent font-bold">></span> Nginx & Linux Server</li>
+              <li class="flex items-center gap-3"><span class="text-accent font-bold">></span> RESTful APIs</li>
             </ul>
           </div>
         </div>
@@ -63,22 +79,49 @@
           <span class="text-accent">02_</span> WORK EXPERIENCE
           <span class="h-px bg-black/10 dark:bg-white/10 flex-1"></span>
         </h2>
-        <div v-if="experiences" class="border-l border-black/10 dark:border-white/10 pl-8 md:pl-12 space-y-24 reveal-container transition-colors duration-500">
-          <div v-for="exp in experiences.data" :key="exp.id" class="reveal relative">
-            <div class="absolute -left-[38px] md:-left-[54px] w-3 h-3 rounded-full mt-2 outline outline-4 outline-white dark:outline-contrast transition-colors duration-500" :class="exp.is_current ? 'bg-accent shadow-[0_0_10px_#3b82f6]' : 'bg-gray-400 dark:bg-white/20'"></div>
-            <h3 class="text-2xl md:text-3xl font-sans font-extrabold tracking-[-0.05em] text-gray-900 dark:text-white mb-2 transition-colors duration-500">
-              {{ exp.role }} <span class="text-accent font-mono text-lg font-normal tracking-normal">@ {{ exp.company }}</span>
-            </h3>
-            <span class="text-gray-500 dark:text-white/40 text-sm font-mono block mb-6 uppercase tracking-wider transition-colors duration-500">
-              {{ exp.start_year }} — {{ exp.is_current ? 'Present' : (exp.end_year || '') }}
-            </span>
-            <div v-if="exp.description" class="text-gray-600 dark:text-white/70 leading-relaxed text-base md:text-lg transition-colors duration-500 space-y-4 font-sans font-normal">
-               <!-- Simple rendering for Strapi Blocks if present -->
-               <div v-for="(block, idx) in exp.description" :key="idx" class="relative pl-6 before:content-['>'] before:font-mono before:font-bold before:absolute before:left-0 before:text-accent">
-                  <span v-for="(child, cIdx) in block.children" :key="cIdx">{{ child.text }}</span>
-               </div>
-            </div>
+        <div class="border-l border-black/10 dark:border-white/10 pl-8 md:pl-12 space-y-24 reveal-container transition-colors duration-500">
+          
+          <div class="reveal relative">
+            <div class="absolute -left-[38px] md:-left-[54px] w-3 h-3 bg-accent rounded-full mt-2 outline outline-4 outline-white dark:outline-contrast transition-colors duration-500 shadow-[0_0_10px_#3b82f6]"></div>
+            <h3 class="text-2xl md:text-3xl font-sans font-extrabold tracking-[-0.05em] text-gray-900 dark:text-white mb-2 transition-colors duration-500">System Implementor <span class="text-accent font-mono text-lg font-normal tracking-normal">@ Terakorp Indonesia</span></h3>
+            <span class="text-gray-500 dark:text-white/40 text-sm font-mono block mb-6 uppercase tracking-wider transition-colors duration-500">Nov 2024 — Present</span>
+            <ul class="text-gray-600 dark:text-white/70 leading-relaxed text-base md:text-lg transition-colors duration-500 space-y-4 font-sans font-normal">
+              <li class="relative pl-6 before:content-['>'] before:font-mono before:font-bold before:absolute before:left-0 before:text-accent">Lead the end-to-end deployment and configuration of enterprise software systems.</li>
+              <li class="relative pl-6 before:content-['>'] before:font-mono before:font-bold before:absolute before:left-0 before:text-accent">Orchestrate API integrations and data mapping for seamless system interoperability.</li>
+              <li class="relative pl-6 before:content-['>'] before:font-mono before:font-bold before:absolute before:left-0 before:text-accent">Conduct rigorous Technical QA and system auditing to ensure production reliability.</li>
+            </ul>
           </div>
+
+          <div class="reveal relative">
+            <div class="absolute -left-[38px] md:-left-[54px] w-3 h-3 bg-gray-400 dark:bg-white/20 rounded-full mt-2 outline outline-4 outline-white dark:outline-contrast transition-colors duration-500"></div>
+            <h3 class="text-2xl md:text-3xl font-sans font-extrabold tracking-[-0.05em] text-gray-900 dark:text-white mb-2 transition-colors duration-500">Full-stack Developer <span class="text-accent font-mono text-lg font-normal tracking-normal">@ CV Satori Rattan</span></h3>
+            <span class="text-gray-500 dark:text-white/40 text-sm font-mono block mb-6 uppercase tracking-wider transition-colors duration-500">Feb 2024 — Jun 2024</span>
+            <ul class="text-gray-600 dark:text-white/70 leading-relaxed text-base md:text-lg transition-colors duration-500 space-y-4 font-sans font-normal">
+              <li class="relative pl-6 before:content-['>'] before:font-mono before:font-bold before:absolute before:left-0 before:text-accent">Engineered a robust Inventory Management System to streamline warehouse operations and stock accuracy.</li>
+              <li class="relative pl-6 before:content-['>'] before:font-mono before:font-bold before:absolute before:left-0 before:text-accent">Designed and implemented both frontend and backend architectures for optimal user experience.</li>
+            </ul>
+          </div>
+
+          <div class="reveal relative">
+            <div class="absolute -left-[38px] md:-left-[54px] w-3 h-3 bg-gray-400 dark:bg-white/20 rounded-full mt-2 outline outline-4 outline-white dark:outline-contrast transition-colors duration-500"></div>
+            <h3 class="text-2xl md:text-3xl font-sans font-extrabold tracking-[-0.05em] text-gray-900 dark:text-white mb-2 transition-colors duration-500">Full-stack Developer <span class="text-accent font-mono text-lg font-normal tracking-normal">@ Infinite Learning</span></h3>
+            <span class="text-gray-500 dark:text-white/40 text-sm font-mono block mb-6 uppercase tracking-wider transition-colors duration-500">Aug 2023 — Jan 2024</span>
+            <ul class="text-gray-600 dark:text-white/70 leading-relaxed text-base md:text-lg transition-colors duration-500 space-y-4 font-sans font-normal">
+              <li class="relative pl-6 before:content-['>'] before:font-mono before:font-bold before:absolute before:left-0 before:text-accent">Architected a Comprehensive Learning Management System (LMS) specifically tailored for the Indonesian Air Force Cadets.</li>
+              <li class="relative pl-6 before:content-['>'] before:font-mono before:font-bold before:absolute before:left-0 before:text-accent">Utilized the MERN Stack and TypeScript to build scalable, high-performance, and maintainable codebases.</li>
+            </ul>
+          </div>
+
+          <div class="reveal relative">
+            <div class="absolute -left-[38px] md:-left-[54px] w-3 h-3 bg-gray-400 dark:bg-white/20 rounded-full mt-2 outline outline-4 outline-white dark:outline-contrast transition-colors duration-500"></div>
+            <h3 class="text-2xl md:text-3xl font-sans font-extrabold tracking-[-0.05em] text-gray-900 dark:text-white mb-2 transition-colors duration-500">Web Developer <span class="text-accent font-mono text-lg font-normal tracking-normal">@ Miravell Beauty</span></h3>
+            <span class="text-gray-500 dark:text-white/40 text-sm font-mono block mb-6 uppercase tracking-wider transition-colors duration-500">Mar 2023 — Jan 2024</span>
+            <ul class="text-gray-600 dark:text-white/70 leading-relaxed text-base md:text-lg transition-colors duration-500 space-y-4 font-sans font-normal">
+              <li class="relative pl-6 before:content-['>'] before:font-mono before:font-bold before:absolute before:left-0 before:text-accent">Developed a high-performance company profile website to enhance brand visibility and online presence.</li>
+              <li class="relative pl-6 before:content-['>'] before:font-mono before:font-bold before:absolute before:left-0 before:text-accent">Implemented SEO strategies and performance optimizations to drive site traffic and user engagement.</li>
+            </ul>
+          </div>
+
         </div>
       </section>
 
@@ -88,32 +131,36 @@
           <span class="text-accent">03_</span> SELECTED PROJECTS
           <span class="h-px bg-black/10 dark:bg-white/10 flex-1"></span>
         </h2>
-        <div v-if="projects" class="grid grid-cols-1 md:grid-cols-2 gap-12 reveal-container">
-          <div v-for="(project, idx) in projects.data" :key="project.id" 
-               class="border border-black/10 dark:border-white/10 p-6 md:p-8 reveal group cursor-pointer bg-transparent hover:bg-black/5 dark:hover:bg-white/[0.02] transition-colors duration-500 overflow-hidden relative"
-               :class="idx % 2 !== 0 ? 'mt-0 md:mt-24' : ''">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 reveal-container">
+          <!-- Project 1 -->
+          <div class="border border-black/10 dark:border-white/10 p-6 md:p-8 reveal group cursor-pointer bg-transparent hover:bg-black/5 dark:hover:bg-white/[0.02] transition-colors duration-500 overflow-hidden relative">
             <div class="aspect-video w-full overflow-hidden mb-8 bg-black/5 dark:bg-white/5 relative border border-black/10 dark:border-white/10">
-              <NuxtImg v-if="project.image" :src="project.image.url" :alt="project.title" format="webp" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
-              <div v-else class="w-full h-full flex items-center justify-center text-gray-400 font-mono italic">No Image</div>
+              <NuxtImg src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop" alt="Strive — Personal OS" format="webp" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
             </div>
-            <h3 class="text-3xl font-sans font-extrabold tracking-[-0.05em] text-gray-900 dark:text-white mb-4 transition-colors duration-500">
-              {{ project.title }} <span v-if="project.tech_stack" class="font-normal text-gray-500 dark:text-white/40 text-xl font-mono tracking-normal">— {{ project.tech_stack }}</span>
-            </h3>
-            <div v-if="project.description" class="text-gray-600 dark:text-white/60 mb-8 text-base md:text-lg transition-colors duration-500 font-sans">
-                <p v-for="(block, bIdx) in project.description" :key="bIdx">
-                   <span v-for="(child, cIdx) in block.children" :key="cIdx">{{ child.text }}</span>
-                </p>
-            </div>
-            <a :href="project.link || '#'" target="_blank" class="text-accent text-sm font-mono uppercase tracking-widest flex items-center w-max relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-accent after:transition-all after:duration-500 group-hover:after:w-full">
+            <h3 class="text-3xl font-sans font-extrabold tracking-[-0.05em] text-gray-900 dark:text-white mb-4 transition-colors duration-500">Strive <span class="font-normal text-gray-500 dark:text-white/40 text-xl font-mono tracking-normal">— Personal OS</span></h3>
+            <p class="text-gray-600 dark:text-white/60 mb-8 text-base md:text-lg transition-colors duration-500 font-sans">A centralized productivity ecosystem integrating task management and financial automation.</p>
+            <span class="text-accent text-sm font-mono uppercase tracking-widest flex items-center w-max relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-accent after:transition-all after:duration-500 group-hover:after:w-full">
               VIEW PROJECT <span class="ml-2 group-hover:translate-x-2 transition-transform duration-500">→</span>
-            </a>
+            </span>
+          </div>
+          
+          <!-- Project 2 -->
+          <div class="border border-black/10 dark:border-white/10 p-6 md:p-8 reveal group cursor-pointer bg-transparent hover:bg-black/5 dark:hover:bg-white/[0.02] transition-colors duration-500 overflow-hidden relative mt-0 md:mt-24">
+            <div class="aspect-video w-full overflow-hidden mb-8 bg-black/5 dark:bg-white/5 relative border border-black/10 dark:border-white/10">
+              <NuxtImg src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Digital Hub" format="webp" loading="lazy" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+            </div>
+            <h3 class="text-3xl font-sans font-extrabold tracking-[-0.05em] text-gray-900 dark:text-white mb-4 transition-colors duration-500">Digital Hub</h3>
+            <p class="text-gray-600 dark:text-white/60 mb-8 text-base md:text-lg transition-colors duration-500 font-sans">A real-time transaction engine for digital services, featuring secure API integrations and precise data validation.</p>
+            <span class="text-accent text-sm font-mono uppercase tracking-widest flex items-center w-max relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-accent after:transition-all after:duration-500 group-hover:after:w-full">
+              VIEW PROJECT <span class="ml-2 group-hover:translate-x-2 transition-transform duration-500">→</span>
+            </span>
           </div>
         </div>
       </section>
 
       <footer class="py-16 border-t border-black/10 dark:border-white/10 text-center px-6 mt-20 transition-colors duration-500">
         <p class="text-gray-500 dark:text-white/30 font-mono text-xs tracking-widest uppercase transition-colors duration-500">
-          // SYSTEM VERSION 1.1.0 <br/>
+          // SYSTEM VERSION 1.1.2 <br/>
           © {{ new Date().getFullYear() }} MUHAMAD FARIS RAFI. ALL RIGHTS RESERVED.
         </p>
       </footer>
@@ -122,30 +169,12 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, nextTick, ref, computed } from 'vue'
+import { onMounted, onUnmounted, nextTick, ref } from 'vue'
 import Lenis from '@studio-freight/lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Sun, Moon } from 'lucide-vue-next'
 import CustomCursor from './components/CustomCursor.vue'
-
-const { find } = useStrapi()
-
-// Fetch dynamic data from Strapi with error handling
-const { data: projects } = useAsyncData('projects', () => find('projects', { populate: '*' }).catch(() => null))
-const { data: experiences } = useAsyncData('experiences', () => find('experiences', { sort: 'start_year:desc' }).catch(() => null))
-const { data: skillsData } = useAsyncData('skills', () => find('skills').catch(() => null))
-
-// Group skills by category
-const skillsGrouped = computed(() => {
-  if (!skillsData.value?.data) return null
-  return skillsData.value.data.reduce((acc, skill) => {
-    const cat = skill.category || 'Other'
-    if (!acc[cat]) acc[cat] = []
-    acc[cat].push(skill)
-    return acc
-  }, {})
-})
 
 let lenis;
 let scrollCtx;
