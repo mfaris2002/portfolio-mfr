@@ -119,5 +119,5 @@ STRAPI_URL=http://your-domain.com:1337
 
 ## 📄 License
 
-© {{ new Date().getFullYear() }} **Muhamad Faris Rafi**. All Rights Reserved.  
+© 2026 **Muhamad Faris Rafi**. All Rights Reserved.  
 Built with 🖤 and JavaScript.
