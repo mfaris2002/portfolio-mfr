@@ -15,8 +15,8 @@ services:
       TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT:-tobemodifiedtransfer}
       JWT_SECRET: ${JWT_SECRET:-tobemodifiedjwtsecret}
     volumes:
-      - ./backend/database:/opt/app/database
-      - ./backend/public/uploads:/opt/app/public/uploads
+      - ./backend/database:/app/database
+      - ./backend/public/uploads:/app/public/uploads
     ports:
       - "1337:1337"
 
