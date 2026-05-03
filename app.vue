@@ -129,10 +129,10 @@ import CustomCursor from './components/CustomCursor.vue'
 
 const { find } = useStrapi()
 
-// Fetch dynamic data from Strapi
-const { data: projects } = await useAsyncData('projects', () => find('projects', { populate: '*' }))
-const { data: experiences } = await useAsyncData('experiences', () => find('experiences', { sort: 'duration:desc' }))
-const { data: skillsData } = await useAsyncData('skills', () => find('skills'))
+// Fetch dynamic data from Strapi with error handling
+const { data: projects } = useAsyncData('projects', () => find('projects', { populate: '*' }).catch(() => null))
+const { data: experiences } = useAsyncData('experiences', () => find('experiences', { sort: 'duration:desc' }).catch(() => null))
+const { data: skillsData } = useAsyncData('skills', () => find('skills').catch(() => null))
 
 // Group skills by category
 const skillsGrouped = computed(() => {
